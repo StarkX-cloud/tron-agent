@@ -31,8 +31,22 @@ cd tron-agent
 
 ### 2. Run agent
 
+### 🐧 Linux / WSL / Git Bash
+
 ```bash 
 bash scripts/run.sh
+```
+---
+
+### 🪟 Windows (PowerShell)
+```Docker
+docker build -t tron-agent -f docker/Dockerfile .
+
+docker run -d `
+  --name tron-agent `
+  -v /var/run/docker.sock:/var/run/docker.sock `
+  -v ${PWD}\logs:/logs `
+  tron-agent
 ```
 
 ### 3. View logs
