@@ -32,7 +32,7 @@ cd tron-agent
 ### 2. Run agent
 
 ```bash 
-scripts/run.sh
+bash scripts/run.sh
 ```
 
 ### 3. View logs
