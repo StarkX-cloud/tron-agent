@@ -18,6 +18,7 @@ TRON gives you real-time visibility into container health, CPU, memory, and runt
 
 -Outputs simple JSONL logs
 
+---
 
 # 🚀 Quick Start
 
@@ -69,6 +70,7 @@ tail -f logs/heartbeat.jsonl
   }
 }
 ```
+---
 
 # 🧠 Design philosophy
 
