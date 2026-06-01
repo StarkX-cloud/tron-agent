@@ -35,7 +35,7 @@ cd tron-agent
 scripts/run.sh
 ```
 
-### 5. View logs
+### 3. View logs
 ```bash
 tail -f logs/heartbeat.jsonl
 ```
