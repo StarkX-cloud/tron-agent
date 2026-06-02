@@ -8,15 +8,17 @@ TRON gives you real-time visibility into container health, CPU, memory, and runt
 
 # ⚡ What it does
 
--Tracks container CPU usage
+- Live container CPU / Memory tracking
+  
+- Startup latency measurement (ms-level)
+  
+- Failure risk scoring engine
 
--Tracks memory usage
-
--Streams live container state every 10 seconds
-
--Runs fully inside Docker
-
--Outputs simple JSONL logs
+- Slow-death detection (degrading containers)
+  
+- Node health aggregation score
+  
+- JSONL telemetry stream (infra-ready format)
 
 ---
 
@@ -41,35 +43,36 @@ bash scripts/run.sh
 
 ### 🪟 Windows (PowerShell)
 ```Docker
-docker build -t tron-agent -f docker/Dockerfile .
-
-docker run -d `
-  --name tron-agent `
-  -v /var/run/docker.sock:/var/run/docker.sock `
-  -v ${PWD}\logs:/logs `
-  tron-agent
+docker run -d --name tron-agent -v //var/run/docker.sock:/var/run/docker.sock -v "${PWD}\logs:/logs" tron-agent
 ```
 
 ### 3. View logs
-```bash
+
+```Docker
+docker logs -f tron-agent
+```
+
+### 4 Inspect raw telemetry file (optional)
+
+### Linux / Mac
+```Bash
 tail -f logs/heartbeat.jsonl
 ```
 
-# 📊 Example Output
-
-```json
-{
-  "ts": "2026-06-01T17:53:31Z",
-  "id": "a81f3c2",
-  "name": "ai-runtime",
-  "status": "running",
-  "metrics": {
-    "cpu_percent": 12.4,
-    "memory_mb": 312.2,
-    "memory_percent": 24.8
-  }
-}
+### Windows PowerShell
+```Bash
+Get-Content .\logs\heartbeat.jsonl -Wait
 ```
+
+
+# 📊 Each snapshot contains:
+
+### - CPU usage per container
+### - Memory footprint
+### - Startup latency (ms)
+### - Failure risk score (0–100)
+### - Slow-death detection flag
+### - Node-wide health score
 ---
 
 # 🧠 Design philosophy
