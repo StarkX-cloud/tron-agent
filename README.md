@@ -27,7 +27,7 @@ TRON gives you real-time visibility into container health, CPU, memory, and runt
 ### 1. Clone repo
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/tron-agent.git
+git clone https://github.com/starkX-cloud/tron-agent.git
 cd tron-agent
 ```
 
